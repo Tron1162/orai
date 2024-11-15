@@ -12,3 +12,21 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+// prisma/schema.prisma
+
+
+
+model Song {
+  id        Int     @id @default(autoincrement())
+  title     String
+  artist    String
+  length    Int
+  price     Float
+  rating    Float
+  Playlists Playlist[] @relation
+}
+model Playlist {
+  id    Int    @id @default(autoincrement())
+  name  String
+  songs Song[]
+}
